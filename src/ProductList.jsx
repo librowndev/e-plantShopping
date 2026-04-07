@@ -286,10 +286,12 @@ function ProductList({onHomeClick}) {
 
                 </div>
                 <div style={styleObjUl}>
+
                     <div><a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
+
                     <div><a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                         <h1 className='cart'>
-                            <div className='car_quantity_count'>{getTotalItemsCount()}</div>
+                            <div className="cart_quantity_count">{getTotalItemsCount()}</div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor"
                                  height="68" width="68">
                                 <rect width="156" height="156" fill="none"></rect>
@@ -308,7 +310,7 @@ function ProductList({onHomeClick}) {
                 <div className="product-grid">
                     {plantsArray.map((category, index) => (
                         <div key={index} className="product-category">
-                            <h2>{category.category}</h2>
+                            <h2 className="cat-name">{category.category}</h2>
                             <div className="product-list">
 
                                 {category.plants.map((plant, plantIndex) => (
@@ -318,7 +320,14 @@ function ProductList({onHomeClick}) {
                                         <h3 className="product-title">{plant.name}</h3>
                                         <p >{plant.description}</p>
                                         <p className="product-price">{plant.cost}</p>
-                                        <button className= "product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+
+                                        {/*<button className= "product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>*/}
+
+                                        <button className= {`product-button  ${cartItems.some(item => item.name === plant.name)  ? 'added-to-cart' : ''}`}
+                                                onClick={() => handleAddToCart(plant)}
+                                           disabled={cartItems.some(item => item.name === plant.name)} >
+                                            {cartItems.some(item => item.name === plant.name)  ? 'Added to Cart' : 'Add to Cart'}</button>
+
                                     </div>
                                 ))}
 

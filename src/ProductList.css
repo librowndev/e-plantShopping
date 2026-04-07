@@ -73,6 +73,11 @@ body {
     
     gap: 20px;
 }
+.cat-name{
+    font-size: 20px;
+    text-align: center;
+    text-decoration: underline;
+}
 
 /* Pseudo-classes - Hover effect on product button */
 .product-card:hover {
